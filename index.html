@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8s">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vulcan Suplementos - Exploda Sua Performance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;900&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #000000 0%, #8B0000 100%);
+        }
+        
+        .title-font {
+            font-family: 'Bebas Neue', cursive;
+        }
+        
+        .explosion-effect {
+            position: relative;
+        }
+        
+        .explosion-effect::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .explosion-effect:hover::after {
+            opacity: 1;
+        }
+        
+        .shake-hover:hover {
+            animation: shake 0.5s;
+        }
+        
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+        
+        .flavor-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Floating WhatsApp and Instagram buttons -->
+    <div class="fixed right-4 bottom-20 z-50 flex flex-col space-y-3">
+        <a href="https://api.whatsapp.com/send?phone=5569993580790" target="_blank" class="bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-lg hover:bg-green-600 transition-all duration-300">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://www.instagram.com/vulcansuplementos" target="_blank" class="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-lg hover:opacity-90 transition-all duration-300">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-black text-white sticky top-0 z-40 shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center">
+               
+                <span class="title-font text-2xl">VULCAN SUPLEMENTOS</span>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="hover:text-red-500 transition duration-300">Início</a>
+                <a href="#products" class="hover:text-red-500 transition duration-300">Produtos</a>
+                <a href="#about" class="hover:text-red-500 transition duration-300">Sobre nós</a>
+                <a href="#why" class="hover:text-red-500 transition duration-300">Diferenciais</a>
+                <a href="#contact" class="hover:text-red-500 transition duration-300">Contato</a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-white focus:outline-none" id="mobile-menu-button">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-black py-2 px-4" id="mobile-menu">
+            <a href="#home" class="block py-2 hover:text-red-500 transition duration-300">Início</a>
+            <a href="#products" class="block py-2 hover:text-red-500 transition duration-300">Produtos</a>
+            <a href="#about" class="block py-2 hover:text-red-500 transition duration-300">Sobre nós</a>
+            <a href="#why" class="block py-2 hover:text-red-500 transition duration-300">Diferenciais</a>
+            <a href="#contact" class="block py-2 hover:text-red-500 transition duration-300">Contato</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient text-white py-16 md:py-24 relative overflow-hidden">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <!-- Text Content -->
+            <div class="md:w-1/2 mb-10 md:mb-0 z-10">
+                <h1 class="title-font text-5xl md:text-7xl mb-4 leading-tight">
+                    EXPLODA SUA <span class="text-red-500">PERFORMANCE</span> COM VULCAN
+                </h1>
+                <p class="text-xl mb-8">A força que nasce no coração de Rondônia</p>
+                <a href="#products" class="explosion-effect bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 inline-flex items-center">
+                    COMPRAR AGORA <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+            
+            <!-- Product Images -->
+            <div class="md:w-1/2 flex flex-col items-center relative z-10">
+                <div class="flex flex-wrap justify-center items-end transform scale-110 md:scale-125 lg:scale-150">
+                    <div class="relative mx-2 mb-8 w-32 md:w-40">
+                        <div class="absolute -inset-2 bg-red-600 rounded-full blur opacity-75 animate-pulse"></div>
+                        <img src="creatinapng.png" alt="Creatina" class="relative rounded-lg h-64 object-cover shadow-xl shake-hover transition duration-300">
+                    </div>
+                    <div class="relative mx-2 w-3s2 md:w-40">
+                        <div class="absolute -inset-2 bg-black rounded-full blur opacity-75 animate-pulse animation-delay-200"></div>
+                        <img src="limaopng.png" alt="Pré-Treino Vulcan" class="relative rounded-lg h-64 object-cover shadow-xl shake-hover transition duration-300">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Fogo background effect -->
+        <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent"></div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="title-font text-4xl md:text-5xl mb-12 text-center">
+                NOSSOS <span class="text-red-600">PRODUTOS</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+                <!-- Limão Selvagem -->
+                <div class="flavor-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-500">
+                    <div class="relative">
+                        <div class="bg-red-600 h-1"></div>
+                        <img src="produto-creatina.jpg" alt="Creatina 100% Pura" class="w-full h-64 object-cover">
+                        <span class="absolute top-4 left-4 bg-black text-white px-3 py-1 rounded-full text-sm font-bold">MAIS VENDIDO</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="title-font text-3xl mb-2">CREATINA</h3>
+                        <p class="text-gray-700 mb-4">Sabor explosivo que acelera seus treinos e maximiza resultados.</p>
+                        
+                        <div class="mb-4">
+                            <h4 class="font-bold text-lg mb-2">BENEFÍCIOS:</h4>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Aumento de força e resistência</li>
+                                <li>Recuperação muscular acelerada</li>
+                                <li>Mais energia para treinos intensos</li>
+                                <li>Hidratação celular aprimorada</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold text-lg mb-2">MODO DE USO:</h4>
+                            <p>Misturar 1 scoop (5g) em 200-300ml de água 30 minutos antes do treino.</p>
+                        </div>
+                        
+                        <div class="flex items-center justify-between mb-6">
+                            <div>
+                                <span class="text-gray-500 line-through">R$ 104,90</span>
+                                <span class="text-2xl font-bold ml-2">R$ 89,99</span>
+                            </div>
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="text-gray-600 ml-1">(42)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <a href="https://api.whatsapp.com/send?phone=5569993580790&text=Ol%C3%A1,%20gostaria%20de%20comprar%20Vulcan!" target="_blank" class="w-full bg-green-500 hover:bg-green-600 text-white text-center py-3 px-6 rounded-lg font-bold transition duration-300 flex items-center justify-center">
+                                <i class="fab fa-whatsapp mr-2 text-xl"></i> COMPRAR AGORA
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Morango Raivoso -->
+                <div class="flavor-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-500">
+                    <div class="relative">
+                        <div class="bg-black h-1"></div>
+                        <img src="produtopretreino.jpg" alt="Pré Treno - Limão Selvagel e Morango Raivoso" class="w-full h-64 object-cover">
+                        <span class="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold">NOVO SABOR</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="title-font text-3xl mb-2">Pré Treno - Limão Selvagem e Morango Raivoso</h3>
+                        <p class="text-gray-700 mb-4">Doçura intensa com potência máxima para seu treino.</p>
+                        
+                        <div class="mb-4">
+                            <h4 class="font-bold text-lg mb-2">BENEFÍCIOS:</h4>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Combustível para treinos pesados</li>
+                                <li>Sistema de entrega otimizado</li>
+                                <li>Sabor intenso e refrescante</li>
+                                <li>Zero açúcar, zero culpa</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold text-lg mb-2">MODO DE USO:</h4>
+                            <p>Misturar 1 scoop (5g) em 200-300ml de água 30 minutos antes do treino.</p>
+                        </div>
+                        
+                        <div class="flex items-center justify-between mb-6">
+                            <div>
+                                <span class="text-gray-500 line-through">R$ 104,90</span>
+                                <span class="text-2xl font-bold ml-2">R$ 89,99</span>
+                            </div>
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span class="text-gray-600 ml-1">(18)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <a href="https://api.whatsapp.com/send?phone=5569993580790&text=Ol%C3%A1,%20gostaria%20de%20comprar%20Vulcan!" target="_blank" class="w-full bg-green-500 hover:bg-green-600 text-white text-center py-3 px-6 rounded-lg font-bold transition duration-300 flex items-center justify-center">
+                                <i class="fab fa-whatsapp mr-2 text-xl"></i> COMPRAR AGORA
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-black text-white relative overflow-hidden">
+        <!-- Fire effect background -->
+        <div class="absolute inset-0 bg-red-900 opacity-10"></div>
+        <div class="container mx-auto px-4 relative">
+            <h2 class="title-font text-4xl md:text-5xl mb-12 text-center">
+                A <span class="text-red-600">FORÇA</span> DA VULCAN
+            </h2>
+            
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <img src="espigao.webp" alt="Sede Vulcan em Rondônia" class="rounded-lg shadow-2xl border-2 border-red-600">
+                </div>
+                
+                <div class="md:w-1/2 md:pl-12">
+                    <h3 class="title-font text-3xl mb-4">DE RONDÔNIA PARA DOMINAR O BRASIL</h3>
+                    <p class="mb-6">A Vulcan Suplementos nasceu em Espigão do Oeste, Rondônia, com a missão de entregar produtos de altíssima qualidade para atletas e entusiastas do fitness em todo o Brasil. Produzidos com os mais altos padrões de qualidade, nossa força vem do coração da Amazônia.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex">
+                            <div class="text-red-500 text-2xl mr-4">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">FORÇA</h4>
+                                <p class="text-gray-300">Nossos produtos são formulados para impulsionar sua energia ao máximo.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <div class="text-red-500 text-2xl mr-4">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">FOCO</h4>
+                                <p class="text-gray-300">Desenvolvemos suplementos que melhoram sua concentração e determinação.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <div class="text-red-500 text-2xl mr-4">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">QUALIDADE</h4>
+                                <p class="text-gray-300">Matérias-primas rigorosamente selecionadas e processos de fabricação de padrão internacional.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 bg-red-900 bg-opacity-30 p-4 rounded-lg border border-red-800">
+                        <p class="italic font-medium">"Do coração da Amazônia para seu treino mais intenso. A Vulcan é a força que faltava na sua rotina."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Vulcan Section -->
+    <section id="why" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="title-font text-4xl md:text-5xl mb-6 text-center">
+                POR QUE A <span class="text-red-600">CREATINA</span> VULCAN?
+            </h2>
+            <p class="text-xl text-center mb-12 max-w-3xl mx-auto">Nossa fórmula exclusiva transforma seu treino em uma experiência de alto desempenho e sabor incomparável.</p>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="text-center p-6 bg-gray-50 rounded-xl shadow-md hover:shadow-xl transition duration-300">
+                    <div class="text-red-500 text-4xl mb-4">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="title-font text-2xl mb-3">QUALIDADE PREMIUM</h3>
+                    <p>Creatina monohidratada micronizada de altíssima pureza (99.9%) para máxima absorção e eficácia.</p>
+                </div>
+                
+                <div class="text-center p-6 bg-gray-50 rounded-xl shadow-md hover:shadow-xl transition duration-300">
+                    <div class="text-red-500 text-4xl mb-4">
+                        <i class="fas fa-glass-whiskey"></i>
+                    </div>
+                    <h3 class="title-font text-2xl mb-3">SABOR INCOMPARÁVEL</h3>
+                    <p>Sistemas de flavorização exclusivos que tornam a experiência de consumo realmente agradável.</p>
+                </div>
+                
+                <div class="text-center p-6 bg-gray-50 rounded-xl shadow-md hover:shadow-xl transition duration-300">
+                    <div class="text-red-500 text-4xl mb-4">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3 class="title-font text-2xl mb-3">ALTA ABSORÇÃO</h3>
+                    <p>Fórmula otimizada com agentes de transporte para garantir que seu corpo aproveite ao máximo cada dose.</p>
+                </div>
+            </div>
+            
+            <!-- Testimonials -->
+            <h3 class="title-font text-3xl text-center mb-8">O QUE NOSSOS ATLETAS DIZEM</h3>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-gray-100 p-6 rounded-lg shadow">
+                    <div class="flex mb-4">
+                        <div class="text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="italic mb-4">"Desde que comecei a usar a creatina da Vulcan meus treinos deram um salto. E os resultados são melhores ainda!"</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-red-600 rounded-full mr-3"></div>
+                        <div>
+                            <p class="font-bold">Marcos S.</p>
+                            <p class="text-sm text-gray-600">Fisiocuturista</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-100 p-6 rounded-lg shadow">
+                    <div class="flex mb-4">
+                        <div class="text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="italic mb-4">"A diferença da Vulcan está no sabor e na qualidade sem igual. Como Profissional de Educação Fisica, recomendo para meus clientes."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-red-600 rounded-full mr-3"></div>
+                        <div>
+                            <p class="font-bold">Cleverson V.</p>
+                            <p class="text-sm text-gray-600">Nutricionista</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-100 p-6 rounded-lg shadow">
+                    <div class="flex mb-4">
+                        <div class="text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="italic mb-4">"O Pré-treino de Limão Selvagem é o melhor que já usei. Noto mais força e resistência nos treinos de musculação pesada."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-red-600 rounded-full mr-3"></div>
+                        <div>
+                            <p class="font-bold">Gabriela</p>
+                            <p class="text-sm text-gray-600">Entusiasta Fitness</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-black to-red-900 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="title-font text-4xl md:text-5xl mb-6">
+                PRONTO PARA <span class="text-red-400">ELEVAR</span> SEU TREINO?
+            </h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Experimente agora a creatina que está revolucionando o mercado brasileiro de suplementos.</p>
+            <a href="#products" class="explosion-effect bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-10 rounded-full text-xl transition duration-300 inline-flex items-center">
+                QUERO MEU VULCAN AGORA! <i class="fas fa-bolt ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="title-font text-4xl md:text-5xl mb-2">
+                    FALE COM A <span class="text-red-600">VULCAN</span>
+                </h2>
+                <p class="text-lg">Tire suas dúvidas ou faça seu pedido diretamente pelo WhatsApp</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="text-red-500 text-4xl mb-4">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="title-font text-xl mb-2">ONDE ESTAMOS</h3>
+                    <p>Espigão do Oeste, Rondônia<br>Atendemos todo o Brasil</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="text-red-500 text-4xl mb-4">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3 class="title-font text-xl mb-2">WHATSAPP</h3>
+                    <p>+55 (69) 99358-0790<br>Atendimento: 8h-18h (Seg-Sab)</p>
+                    <a href="https://api.whatsapp.com/send?phone=5569993580790" target="_blank" class="inline-block mt-3 bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded font-bold transition duration-300">
+                        Chamar no WhatsApp
+                    </a>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="text-red-500 text-4xl mb-4">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h3 class="title-font text-xl mb-2">INSTAGRAM</h3>
+                    <p>@vulcansuplementos<br>Acompanhe nosso conteúdo</p>
+                    <a href="https://www.instagram.com/vulcansuplementos" target="_blank" class="inline-block mt-3 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 hover:opacity-90 text-white py-2 px-4 rounded font-bold transition duration-300">
+                        Seguir no Instagram
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <img src="LOGO PNG.png" alt="Vulcan Logo" class="h-20 mr-2">
+                        <span class="title-font text-2xl"></span>
+                    </div>
+                    <p class="italic mb-4">"O treino começa na mente. A força vem da Vulcan."</p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.instagram.com/vulcansuplementos" target="_blank" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="https://api.whatsapp.com/send?phone=5569993580790" target="_blank" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="title-font text-xl mb-4">PRODUTOS</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#products" class="hover:text-red-500 transition duration-300">Creatina</a></li>
+                        <li><a href="#products" class="hover:text-red-500 transition duration-300">Pré-treino Morango Raivoso</a></li>
+                        <li><a href="#products" class="hover:text-red-500 transition duration-300">Pré-treino Limão Selvagem</a></li>
+
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="title-font text-xl mb-4">INFORMAÇÕES</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-red-500 transition duration-300"> (69) 99358-0790</a></li>
+                        <li><a href="#" class="hover:text-red-500 transition duration-300"></a></li>
+                        <li><a href="#" class="hover:text-red-500 transition duration-300"></a></li>
+                        <li><a href="#" class="hover:text-red-500 transition duration-300"></a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="title-font text-xl mb-4">ATENDIMENTO</h3>
+                    <ul class="space-y-2">
+                        <li>WhatsApp: (69) 99358-0790</li>
+                        <li>Email: vulcansuplementosalimentares@gmail.com</li>
+                        <li>Horário: 8h-18h (Seg-Sab)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
+                <p>&copy; 2023 Vulcan Suplementos Alimentares. Todos os direitos reservados.</p>
+                <p class="mt-2 text-sm">Espigão do Oeste - RO | CNPJ: 12.345.678/0001-99</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scroll for all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+        
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fadeIn');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
+            });
+            
+            // Add shake animation to buttons on hover
+            document.querySelectorAll('.shake-hover').forEach(button => {
+                button.addEventListener('mouseover', () => {
+                    button.classList.add('shake-hover');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
